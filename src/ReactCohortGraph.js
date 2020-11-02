@@ -61,7 +61,7 @@ class ReactCohortGraph extends React.Component {
         const { currentType } = this.state;
         const keys = Object.keys(data);
         if(keys.length > 0) {
-            const store = this._getStore(this.props);
+            const store = this._getStore(nextProps);
             const currentDataType = dataType || Object.keys(data)[0];
             if (currentType === "" || (valueType === this.state.valueType && dataType === currentType)) {
                 this.setState({
@@ -71,11 +71,13 @@ class ReactCohortGraph extends React.Component {
                 if (valueType) {
                     this.setState({
                         currentType: currentDataType,
-                        valueType: valueType
+                        valueType: valueType,
+                        dataStore: store
                     });
                 } else {
                     this.setState({
                         currentType: currentDataType,
+                        dataStore: store
                     });
                 }
             }
